@@ -6,15 +6,15 @@
 //
 
 import SwiftUI
-import CoreData
+internal import CoreData
 
 @main
-struct CoreDataProj_2App: App {
+struct NotesApp: App {
     let persistenceController = PersistenceController.shared
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NoteListView(viewModel: NotesViewModel(context: PersistenceController.preview.container.viewContext))
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
